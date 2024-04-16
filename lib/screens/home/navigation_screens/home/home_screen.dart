@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../walk_planning/walk_planning_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -317,21 +319,31 @@ class ScrollCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                height: screenHeight * 0.04,
-                width: screenWidth * 0.2,
-                padding: EdgeInsetsDirectional.symmetric(
-                    horizontal: averageScreenSize * 0.02, vertical: averageScreenSize * 0.01),
-                decoration: BoxDecoration(
-                    color: const Color(0xff202020),
-                    borderRadius: BorderRadiusDirectional.circular(averageScreenSize * 0.01)),
-                child: Center(
-                  child: Text(
-                    index % 2 == 0 ? '\$5/hr' : '\$7/hr',
-                    style: GoogleFonts.poppins(
-                      color: const Color(0xffFBFBFB),
-                      fontWeight: FontWeight.w500,
-                      fontSize: averageScreenSize * 0.02,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const WalkPlanningScreen(),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: screenHeight * 0.04,
+                  width: screenWidth * 0.2,
+                  padding: EdgeInsetsDirectional.symmetric(
+                      horizontal: averageScreenSize * 0.02, vertical: averageScreenSize * 0.01),
+                  decoration: BoxDecoration(
+                      color: const Color(0xff202020),
+                      borderRadius: BorderRadiusDirectional.circular(averageScreenSize * 0.01)),
+                  child: Center(
+                    child: Text(
+                      index % 2 == 0 ? '\$5/hr' : '\$7/hr',
+                      style: GoogleFonts.poppins(
+                        color: const Color(0xffFBFBFB),
+                        fontWeight: FontWeight.w500,
+                        fontSize: averageScreenSize * 0.02,
+                      ),
                     ),
                   ),
                 ),

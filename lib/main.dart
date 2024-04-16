@@ -1,4 +1,4 @@
-import 'package:dog_walking_app/screens/home/navigation_screen.dart';
+import 'package:dog_walking_app/screens/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'utils/dimens.dart';
@@ -22,10 +22,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xffFB724C),
+        ),
         useMaterial3: true,
       ),
-      home: const NavigationScreen(),
+      home: const OnboardingScreen(),
     );
   }
 }

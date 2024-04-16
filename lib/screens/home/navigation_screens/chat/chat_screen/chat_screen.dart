@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../chat_user_profile_screen/chat_user_profile_screen.dart';
 import 'chat_screen_data.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -33,47 +34,57 @@ class _ChatScreenState extends State<ChatScreen> {
             color: const Color(0xff2B2B2B),
           ),
         ),
-        title: Row(
-          children: [
-            CircleAvatar(
-              radius: averageScreenSize * 0.04,
-              backgroundImage: AssetImage(widget.image),
-            ),
-            SizedBox(width: screenWidth * 0.02),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.name,
-                  style: GoogleFonts.poppins(
-                    color: const Color(0xff2B2B2B),
-                    fontWeight: FontWeight.w700,
-                    fontSize: averageScreenSize * 0.035,
+        title: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChatUserProfileScreen(image: widget.image, name: widget.name),
+              ),
+            );
+          },
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: averageScreenSize * 0.04,
+                backgroundImage: AssetImage(widget.image),
+              ),
+              SizedBox(width: screenWidth * 0.02),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.name,
+                    style: GoogleFonts.poppins(
+                      color: const Color(0xff2B2B2B),
+                      fontWeight: FontWeight.w700,
+                      fontSize: averageScreenSize * 0.035,
+                    ),
                   ),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/online_icon.svg',
-                      color: const Color(0xff5AD439),
-                    ),
-                    SizedBox(width: screenWidth * 0.01),
-                    Text(
-                      'Online',
-                      style: GoogleFonts.poppins(
-                        color: const Color(0xffAEAEB2),
-                        fontWeight: FontWeight.w500,
-                        fontSize: averageScreenSize * 0.025,
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/online_icon.svg',
+                        color: const Color(0xff5AD439),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            )
-          ],
+                      SizedBox(width: screenWidth * 0.01),
+                      Text(
+                        'Online',
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xffAEAEB2),
+                          fontWeight: FontWeight.w500,
+                          fontSize: averageScreenSize * 0.025,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
         titleSpacing: 0,
         actions: [
